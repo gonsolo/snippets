@@ -9,5 +9,5 @@ e: edit
 compile_commands.json:
 	bear -- clang++ -std=c++20 -o main main.cpp
 tidy:
-	clang-tidy -checks=modernize-* main.cpp
+	clang-tidy -checks=modernize-* -fix main.cpp
 .PHONY: all c clean e edit
