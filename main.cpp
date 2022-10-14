@@ -10,11 +10,9 @@ class A {};
 
 class B : public A {};
 
-A bla() {
+auto bla() -> A {
         B b;
-        return A(b);
+        return {b};
 }
 
-int main()
-{
-}
+auto main() -> int {}
