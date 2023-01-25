@@ -1,8 +1,13 @@
-STD=-std=c++2b
-
+CXX=c++
+#CXX=g++
+#CXX=clang++
+#CXX=clang++-15
+#STD=-std=c++2b
+FLAGS = -g -std=c++20 # -Wall -Wextra -Werror
+LIBS = -lOpenImageIO -lOpenImageIO_Util
 all:
-	clang++ $(STD) -o main main.cpp
-	./main
+	$(CXX) $(FLAGS) -o main main.cpp $(LIBS)
+	@./main
 c: clean
 clean:
 	rm -f main
