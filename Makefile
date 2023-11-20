@@ -1,12 +1,15 @@
-CXX=c++
+#CXX=c++
 #CXX=g++
-#CXX=clang++
-#CXX=clang++-15
-#STD=-std=c++2b
-FLAGS = -g -std=c++20 # -Wall -Wextra -Werror
-LIBS = -lOpenImageIO -lOpenImageIO_Util
-all:
-	$(CXX) $(FLAGS) -o main main.cpp $(LIBS)
+CXX=clang++
+
+FLAGS = -g -std=gnu++20 -Wall -Wextra -Werror
+
+all: run
+main: main.o
+	$(CXX) $(FLAGS) $(INCLUDES) -o main main.o $(LIBS)
+main.o: main.cpp
+	$(CXX) $(FLAGS) -c main.cpp
+run: main
 	@./main
 c: clean
 clean:
@@ -14,7 +17,7 @@ clean:
 e: edit
 	vi main.cpp
 compile_commands.json:
-	bear -- clang++ $(STD) -o main main.cpp
+	bear -- $(CXX) $(FLAGS) -o main main.cpp $(LIBS)
 tidy:
 	clang-tidy -checks=modernize-* -fix main.cpp
 .PHONY: all c clean e edit
