@@ -13,7 +13,7 @@ run: main
 	@./main
 c: clean
 clean:
-	rm -f main
+	rm -f main compile_commands.json main.o
 e: edit
 	vi main.cpp
 compile_commands.json:
