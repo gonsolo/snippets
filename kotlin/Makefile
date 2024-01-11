@@ -1,8 +1,11 @@
 run: BlaKt.class
-	java BlaKt
+	@java BlaKt
 BlaKt.class: bla.kt
-	kotlinc bla.kt
-.PHONY: run c clean
+	@kotlinc bla.kt
+.PHONY: run c clean e edit
 c: clean
 clean:
-	rm -rf BlaKt.class META-INF
+	@rm -rf BlaKt.class META-INF
+e: edit
+edit:
+	@vi bla.kt
