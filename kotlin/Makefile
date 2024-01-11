@@ -1,5 +1,5 @@
 run: BlaKt.class
-	@java BlaKt
+	@kotlin BlaKt
 BlaKt.class: bla.kt
 	@kotlinc bla.kt
 .PHONY: run c clean e edit
