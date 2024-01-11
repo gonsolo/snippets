@@ -1,23 +1,23 @@
 #CXX=c++
-#CXX=g++
-CXX=clang++
+CXX=g++
+#CXX=clang++
 
-FLAGS = -g -std=gnu++20 -Wall -Wextra -Werror
+FLAGS = -g -std=c++20 -Wall -Wextra -Werror
 
 all: run
-main: main.o
-	$(CXX) $(FLAGS) $(INCLUDES) -o main main.o $(LIBS)
-main.o: main.cpp
-	$(CXX) $(FLAGS) -c main.cpp
-run: main
-	@./main
+bla: bla.o
+	$(CXX) $(FLAGS) $(INCLUDES) -o bla bla.o $(LIBS)
+bla.o: bla.cc
+	$(CXX) $(FLAGS) -c $<
+run: bla
+	@./bla
 c: clean
 clean:
-	rm -f main compile_commands.json main.o
+	rm -f bla compile_commands.json bla.o
 e: edit
-	vi main.cpp
+	vi bla.cc
 compile_commands.json:
-	bear -- $(CXX) $(FLAGS) -o main main.cpp $(LIBS)
+	bear -- $(CXX) $(FLAGS) -o bla bla.cc $(LIBS)
 tidy:
-	clang-tidy -checks=modernize-* -fix main.cpp
+	clang-tidy -checks=modernize-* -fix bla.cc
 .PHONY: all c clean e edit
